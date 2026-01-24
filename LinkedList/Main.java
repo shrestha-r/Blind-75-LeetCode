@@ -2,7 +2,7 @@ package LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList list = new MyLinkedList();
+        MyLinkedList<Integer> list = new MyLinkedList<>();
         list.insertStart(5);
         list.insertStart(4);
         list.insertStart(3);

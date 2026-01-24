@@ -1,7 +1,7 @@
 package LinkedList;
 
-public class MyLinkedList {
-    private Node head;
+public class MyLinkedList<T> {
+    private Node<T> head;
     private int size;
 
     public MyLinkedList() {
@@ -9,16 +9,16 @@ public class MyLinkedList {
         size = 0;
     }
 
-    public void insertStart(int value) {
-        Node current = new Node(value);
+    public void insertStart(T value) {
+        Node<T> current = new Node<>(value);
         current.next = head;
         head = current;
         size++;
     }
 
-    public void insertEnd(int value) {
-        Node newNode = new Node(value);
-        Node current = head;
+    public void insertEnd(T value) {
+        Node<T> newNode = new Node<>(value);
+        Node<T> current = head;
         while (current.next != null) {
             current = current.next;
         }
@@ -32,7 +32,7 @@ public class MyLinkedList {
     }
 
     public void deleteEnd() {
-        Node current = head;
+        Node<T> current = head;
         while (current.next.next != null) {
             current = current.next;
         }
@@ -40,8 +40,8 @@ public class MyLinkedList {
         size--;
     }
 
-    public boolean contains(int key) {
-        Node current = head;
+    public boolean contains(T key) {
+        Node<T> current = head;
         while (current != null) {
             if (current.data == key) {
                 return true;
@@ -58,7 +58,7 @@ public class MyLinkedList {
     @Override
     public String toString() {
         String list = "";
-        Node current = head;
+        Node<T> current = head;
         while (current != null) {
             list += current.data + "-->";
             current = current.next;
