@@ -2,11 +2,11 @@ package LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        MyLinkedList<Integer> list = new MyLinkedList<>();
-        list.insertStart(5);
-        list.insertStart(4);
-        list.insertStart(3);
-        list.insertEnd(3);
+        MyLinkedList<String> list = new MyLinkedList<>();
+        list.insertStart("A");
+        list.insertStart("B");
+        list.insertStart("C");
+        list.insertEnd("D");
         System.out.println(list.toString());
         System.out.println("size " + list.getSize());
 
@@ -17,7 +17,7 @@ public class Main {
         list.deleteEnd();
         System.out.println(list.toString());
         System.out.println("size " + list.getSize());
-        System.out.println(list.contains(5));
+        System.out.println(list.contains("D"));
 
     }
 }

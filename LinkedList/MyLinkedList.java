@@ -50,7 +50,9 @@ public class MyLinkedList<T> {
         }
         return false;
     }
-
+    public boolean isEmpty(){
+        return size == 0;
+    }
     public int getSize() {
         return size;
     }
