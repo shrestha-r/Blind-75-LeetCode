@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Belgian Waffle Company | Fresh Belgian Waffles & Cookie Dough</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4A574;
+            --primary-dark: #B8935F;
+            --secondary: #2C1810;
+            --accent: #E85D04;
+            --light: #FFF8F0;
+            --dark: #1A1A1A;
+            --success: #2ECC71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-top {
+            background: var(--accent);
+            text-align: center;
+            padding: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .order-btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(232, 93, 4, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=1920');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: #ff6b1a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(232, 93, 4, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid white;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        .student-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+
+        /* Features Bar */
+        .features-bar {
+            background: white;
+            padding: 2rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: -50px auto 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .location-selector {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .location-selector select {
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 2px solid #eee;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .tab-btn.active:hover {
+            color: white;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .menu-item-image {
+            height: 220px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .availability-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--success);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .availability-badge.out-of-stock {
+            background: #e74c3c;
+        }
+
+        .dietary-icons {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dietary-icon {
+            background: rgba(255,255,255,0.95);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .add-to-cart:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Student Deal Section */
+        .student-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #1a1a1a 100%);
+            color: white;
+            padding: 4rem 5%;
+            margin: 4rem 0;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .student-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .student-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .student-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .student-benefits {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .student-benefits li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .student-benefits i {
+            color: var(--primary);
+        }
+
+        .student-code {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px dashed var(--primary);
+            text-align: center;
+        }
+
+        .student-code h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .code {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .student-image {
+            text-align: center;
+        }
+
+        .student-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Order Section */
+        .order-section {
+            background: white;
+            padding: 4rem 5%;
+            margin: 4rem auto;
+            max-width: 1400px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .order-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .order-card {
+            border: 2px solid #eee;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .order-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .order-card.featured {
+            border-color: var(--accent);
+            background: linear-gradient(to bottom, rgba(232, 93, 4, 0.05), transparent);
+            position: relative;
+        }
+
+        .order-card.featured::before {
+            content: 'SAVE 20%';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .order-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .order-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .order-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Reviews */
+        .reviews-section {
+            padding: 4rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stars {
+            color: #f1c40f;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        .reviewer {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 4rem 5% 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Mobile Bottom Bar */
+        .mobile-order-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-total {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .student-content {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-order-bar {
+                display: flex;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <i class="fas fa-map-marker-alt"></i> Now Open: Huddersfield • Manchester • Blackburn • Bolton • Rochdale • Oldham
+        </div>
+        <nav>
+            <div class="logo"><i class="fas fa-utensils"></i> The Belgian Waffle Co.</div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#locations">Locations</a></li>
+                <li><a href="#student">Student Deals</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#" class="order-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-bag"></i> Order Now
+                </a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Authentic Belgian Waffles</h1>
+            <p>Freshly made-to-order with premium ingredients. Halal certified. Open until 1AM for late-night cravings.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn-primary">
+                    <i class="fas fa-utensils"></i> View Menu
+                </a>
+                <a href="#order" class="btn-secondary">
+                    <i class="fas fa-bicycle"></i> Order Online
+                </a>
+            </div>
+        </div>
+        <div class="student-badge">
+            <i class="fas fa-graduation-cap"></i> 10% Student Discount
+        </div>
+    </section>
+
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <h3>100% Halal</h3>
+            <p>Certified halal ingredients</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-fire"></i>
+            <h3>Made Fresh</h3>
+            <p>Cooked to order daily</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-clock"></i>
+            <h3>Late Night</h3>
+            <p>Open until 1AM</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Local Pickup</h3>
+            <p>15 locations UK wide</p>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <h2>Our Menu</h2>
+            <p>Handcrafted Belgian waffles and indulgent desserts</p>
+
+            <div class="location-selector">
+                <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i>
+                <select id="locationSelect">
+                    <option>Huddersfield - Blacker Road</option>
+                    <option>Manchester - Rusholme</option>
+                    <option>Blackburn - Town Centre</option>
+                    <option>Bolton - Deane Road</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all')">
+                <i class="fas fa-th-large"></i> All
+            </button>
+            <button class="tab-btn" onclick="filterMenu('waffles')">
+                <i class="fas fa-utensils"></i> Belgian Waffles
+            </button>
+            <button class="tab-btn" onclick="filterMenu('cookie')">
+                <i class="fas fa-cookie"></i> Cookie Dough
+            </button>
+            <button class="tab-btn" onclick="filterMenu('nachos')">
+                <i class="fas fa-mortar-pestle"></i> Waffle Nachos
+            </button>
+            <button class="tab-btn" onclick="filterMenu('drinks')">
+                <i class="fas fa-coffee"></i> Drinks
+            </button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <!-- Menu items will be populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Student Section -->
+    <section class="student-section" id="student">
+        <div class="student-content">
+            <div class="student-text">
+                <h2>Student Specials</h2>
+                <p>University of Huddersfield students save 10% on every order. Perfect for study breaks or late-night sessions.</p>
+                <ul class="student-benefits">
+                    <li><i class="fas fa-check"></i> 10% off with valid student ID</li>
+                    <li><i class="fas fa-check"></i> Free delivery to campus area</li>
+                    <li><i class="fas fa-check"></i> Study group discounts (5+ people)</li>
+                    <li><i class="fas fa-check"></i> Open until 1AM for late study sessions</li>
+                </ul>
+                <div class="student-code">
+                    <h3>Online Code</h3>
+                    <div class="code">STUDENT10</div>
+                    <small>Valid with student ID on collection</small>
+                </div>
+            </div>
+            <div class="student-image">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600" alt="Student enjoying waffle">
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order-section" id="order">
+        <div class="section-header">
+            <h2>How to Order</h2>
+            <p>Choose the most convenient way to get your waffle fix</p>
+        </div>
+
+        <div class="order-options">
+            <div class="order-card featured" onclick="openCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <h3>Click & Collect</h3>
+                <p>Order online, pick up in 15 mins. Save 20% vs delivery apps.</p>
+                <button class="btn-primary" style="margin-top: 1rem;">Order Now</button>
+            </div>
+            <div class="order-card">
+                <i class="fas fa-bicycle"></i>
+                <h3>Delivery</h3>
+                <p>We deliver to Huddersfield town centre and campus areas.</p>
+                <button class="btn-primary" style="margin-top: 1rem; background: var(--secondary);">View Areas</button>
+            </div>
+            <div class="order-card">
+                <i class="fas fa-store"></i>
+                <h3>Eat In</h3>
+                <p>Enjoy your waffle fresh from the iron in our cozy shop.</p>
+                <button class="btn-primary" style="margin-top: 1rem; background: var(--secondary);">Book Table</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <h2>What Customers Say</h2>
+            <p>Rated 4.8/5 from over 2,000 reviews</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Best waffles in Huddersfield! The Kinder Bueno waffle is incredible and the online ordering is so convenient."</p>
+                <p class="reviewer">- Sarah M., Uni of Huddersfield</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"Love that they're open late. Perfect for after library sessions. The student discount is a lifesaver!"</p>
+                <p class="reviewer">- James K., Student</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="review-text">"Great to see live availability on the website now. No more disappointment when flavours are out of stock!"</p>
+                <p class="reviewer">- Amina H., Local Resident</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Belgian Waffle Co.</h3>
+                <p>Authentic Belgian waffles made fresh to order. Halal certified.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#menu">Full Menu</a>
+                <a href="#locations">Our Locations</a>
+                <a href="#student">Student Discount</a>
+                <a href="#">Catering</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="footer-section">
+                <h3>Huddersfield Location</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 15 Blacker Road, HD1 5HU</p>
+                <p><i class="fas fa-phone"></i> 01484 123456</p>
+                <p><i class="fas fa-clock"></i> Open daily 11AM - 1AM</p>
+                <p><i class="fas fa-envelope"></i> huddersfield@belgianwaffle.co.uk</p>
+            </div>
+            <div class="footer-section">
+                <h3>Download App</h3>
+                <p>Order faster and earn rewards with our app.</p>
+                <button class="btn-primary" style="margin-top: 1rem; width: 100%;">
+                    <i class="fas fa-mobile-alt"></i> Get the App
+                </button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 The Belgian Waffle Company. All rights reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Order Bar -->
+    <div class="mobile-order-bar">
+        <div class="cart-info">
+            <i class="fas fa-shopping-bag" style="font-size: 1.5rem; color: var(--accent);"></i>
+            <div>
+                <div style="font-size: 0.9rem; color: #666;">Your Order</div>
+                <div class="cart-total">£0.00</div>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="openCart()">
+            Checkout
+        </button>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Order</h2>
+                <button class="close-modal" onclick="closeCart()">&times;</button>
+            </div>
+            <div id="cartItems">
+                <p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty. Add some delicious waffles!</p>
+            </div>
+            <div style="border-top: 2px solid #eee; margin-top: 1rem; padding-top: 1rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700;">
+                    <span>Total</span>
+                    <span id="cartTotal">£0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">
+                    <i class="fas fa-lock"></i> Secure Checkout
+                </button>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    <i class="fas fa-shield-alt"></i> SSL Secure Payment
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menu Data
+        const menuItems = [
+            {
+                id: 1,
+                name: "Kinder Bueno Waffle",
+                category: "waffles",
+                price: 7.95,
+                description: "Fresh waffle topped with Kinder Bueno pieces, Nutella drizzle, and whipped cream",
+                image: "https://images.unsplash.com/photo-1626202158825-4b57d5b2708d?w=400",
+                available: true,
+                dietary: ["H"],
+                popular: true
+            },
+            {
+                id: 2,
+                name: "Pistachio Kunafa Waffle",
+                category: "waffles",
+                price: 8.50,
+                description: "Middle Eastern inspired with pistachio cream, kunafa pastry, and rose water drizzle",
+                image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400",
+                available: true,
+                dietary: ["H", "V"],
+                popular: true
+            },
+            {
+                id: 3,
+                name: "Lotus Biscoff Waffle",
+                category: "waffles",
+                price: 7.50,
+                description: "Warm waffle with Lotus Biscoff spread, crushed biscuits, and caramel sauce",
+                image: "https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 4,
+                name: "Fresh Strawberry Waffle",
+                category: "waffles",
+                price: 6.95,
+                description: "Belgian waffle topped with fresh strawberries, vanilla ice cream, and strawberry sauce",
+                image: "https://images.unsplash.com/photo-1504113888839-1c8eb50233d3?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 5,
+                name: "Chocolate Cookie Dough",
+                category: "cookie",
+                price: 6.50,
+                description: "Warm chocolate chip cookie dough served with vanilla ice cream and chocolate sauce",
+                image: "https://images.unsplash.com/photo-1548365284-1e3e8d6e6e9c?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 6,
+                name: "Red Velvet Cookie Dough",
+                category: "cookie",
+                price: 6.95,
+                description: "Red velvet cookie dough with cream cheese frosting and white chocolate chips",
+                image: "https://images.unsplash.com/photo-1612203985729-70726954388c?w=400",
+                available: false,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 7,
+                name: "Waffle Nachos (Sharing)",
+                category: "nachos",
+                price: 9.95,
+                description: "Waffle pieces loaded with Nutella, strawberries, banana, marshmallows, and ice cream",
+                image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400",
+                available: true,
+                dietary: ["H", "V"],
+                popular: true
+            },
+            {
+                id: 8,
+                name: "Build Your Own Waffle",
+                category: "waffles",
+                price: 5.95,
+                description: "Plain waffle with choice of 3 toppings. Additional toppings 50p each",
+                image: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 9,
+                name: "Oreo Crunch Waffle",
+                category: "waffles",
+                price: 7.50,
+                description: "Loaded with Oreo crumbs, cookies & cream ice cream, and white chocolate sauce",
+                image: "https://images.unsplash.com/photo-1551106652-a5bcf4b29f6d?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 10,
+                name: "Belgian Hot Chocolate",
+                category: "drinks",
+                price: 3.50,
+                description: "Rich Belgian chocolate with whipped cream and marshmallows",
+                image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 11,
+                name: "Fresh Milkshake",
+                category: "drinks",
+                price: 4.50,
+                description: "Choose from Vanilla, Chocolate, Strawberry, or Biscoff. Topped with whipped cream",
+                image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            },
+            {
+                id: 12,
+                name: "Nutella Waffle Stick",
+                category: "waffles",
+                price: 3.50,
+                description: "On-the-go waffle stick dipped in Nutella. Perfect for walking to campus",
+                image: "https://images.unsplash.com/photo-1626202158825-4b57d5b2708d?w=400",
+                available: true,
+                dietary: ["H", "V"]
+            }
+        ];
+
+        let cart = [];
+
+        // Render Menu
+        function renderMenu(category = 'all') {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-item';
+                card.innerHTML = `
+                    <div class="menu-item-image">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(item.name)}'">
+                        <div class="availability-badge ${!item.available ? 'out-of-stock' : ''}">
+                            ${item.available ? '<i class="fas fa-check"></i> Available' : '<i class="fas fa-times"></i> Sold Out'}
+                        </div>
+                        ${item.dietary.includes('H') ? `
+                            <div class="dietary-icons">
+                                <div class="dietary-icon" title="Halal">H</div>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <div>
+                                <h3>${item.name}</h3>
+                                ${item.popular ? '<span style="color: var(--accent); font-size: 0.8rem; font-weight: 600;"><i class="fas fa-fire"></i> Popular</span>' : ''}
+                            </div>
+                            <div class="price">£${item.price.toFixed(2)}</div>
+                        </div>
+                        <p class="description">${item.description}</p>
+                        <button class="add-to-cart" ${!item.available ? 'disabled' : ''} onclick="addToCart(${item.id})">
+                            ${item.available ? '<i class="fas fa-plus"></i> Add to Order' : '<i class="fas fa-clock"></i> Currently Unavailable'}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Menu
+        function filterMenu(category) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent.includes('All'))) {
+                    btn.classList.add('active');
+                }
+            });
+
+            renderMenu(category);
+        }
+
+        // Add to Cart
+        function addToCart(id) {
+            const item = menuItems.find(i => i.id === id);
+            if (!item || !item.available) return;
+
+            const existing = cart.find(i => i.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({...item, quantity: 1});
+            }
+
+            updateCart();
+            openCart();
+        }
+
+        // Update Cart UI
+        function updateCart() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.querySelectorAll('.cart-total').forEach(el => {
+                el.textContent = '£' + total.toFixed(2);
+            });
+            document.getElementById('cartTotal').textContent = '£' + total.toFixed(2);
+
+            const cartItems = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Your cart is empty. Add some delicious waffles!</p>';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <div>
+                            <div style="font-weight: 600;">${item.name}</div>
+                            <div style="color: #666; font-size: 0.9rem;">£${item.price.toFixed(2)} x ${item.quantity}</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-weight: 700;">£${(item.price * item.quantity).toFixed(2)}</span>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #e74c3c; cursor: pointer;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function openCart() {
+            document.getElementById('cartModal').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Please add items to your cart first!');
+                return;
+            }
+            alert('Demo: This would proceed to payment. In the real version, this would integrate with Stripe/PayPal for direct ordering, saving the business 15-30% in commission fees!');
+        }
+
+        // Close modal on outside click
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCart();
+        });
+
+        // Initialize
+        renderMenu();
+    </script>
+</body>
+</html>
